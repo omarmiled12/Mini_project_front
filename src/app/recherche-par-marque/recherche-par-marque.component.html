@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Marques </label>
+    <!--     <select class="form-control form-control-lg" id="idMar" name="idMar"
+        [(ngModel)]="IdMarque" (change)="onchange()">
+        
+        <option *ngFor="let mar of marques" value="{{mar.idMar}}">
+        {{mar.nomMar}}
+        </option>
+        </select> -->
+    </div>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+  
+          <thead>
+            <tr> <th>Id</th><th>Nom</th> <th>Prix</th>  <th>Date Création</th><th>Marque</th> </tr>
+          </thead>
+          <tbody *ngFor="let tv of tvs">
+            <tr>
+              <td>{{tv.idTv}}</td>
+              <td>{{tv.nomTv}}</td>
+              <td>{{tv.prixTv}}</td>
+              <td>{{tv.dateCreation | date:'dd/MM/yyyy' }}</td>
+              <td>{{tv.marque.nomMar}}</td>
+             <!--  <td><a class="btn btn-danger" (click)="supprimerTv(tv)">Supprimer</a></td>
+              <a [routerLink]="['/update-tv', tv.idTv]" class="btn btn-success">Modifier</a>
+   -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,34 @@
+<!-- liste-nutritional.component.html -->
+
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+      <app-update-marque
+        [marque]="updatedMarque"
+        (marqueUpdated)="marqueUpdated($event)"
+        [ajout]="ajout">
+      </app-update-marque>
+    </div>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom Marque</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mar of marques">
+              <td>{{ mar.idMar }}</td>
+              <td>{{ mar.nomMar }}</td>
+              <td>
+                <button class="btn btn-success" (click)="updateMar(mar)">Editer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,60 @@
+<div class="container">
+  <div>
+    <h2>Modifier un Tv :</h2>
+  </div>
+  <form (ngSubmit)="updateTv()" #updateTvForm="ngForm">
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Tv</label>
+      <input type="text" [(ngModel)]="currentTv.idTv" 
+        name="idTv" class="form-control" required />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Tv</label>
+      <input type="text" [(ngModel)]="currentTv.nomTv" 
+        name="nomTv" class="form-control" required minlength="3" />
+      <div *ngIf="updateTvForm.submitted && updateTvForm.controls['nomTv']?.touched && !updateTvForm.controls['nomTv']?.valid" class="text-danger">
+        Le nom doit comporter au moins 3 caractères.
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Tv</label>
+      <input type="number" [(ngModel)]="currentTv.prixTv"
+        name="prixTv" class="form-control" required />
+    </div>
+
+    <!-- <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="currentTv.email"
+        name="email" class="form-control" required email />
+      <div *ngIf="updateTvForm.submitted && updateTvForm.controls['email']?.touched && !updateTvForm.controls['email']?.valid" class="text-danger">
+        Veuillez entrer un email valide.
+      </div>
+      <div *ngIf="updateTvForm.controls['email']?.touched && emailInvalid()" class="text-danger">
+        L'email doit contenir '&#64;' et '.com'.
+      </div>
+    </div> -->
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input type="date" [ngModel]="currentTv.dateCreation | date: 'yyyy-MM-dd'" 
+        (ngModelChange)="currentTv.dateCreation = $event" name="dateCreation"
+        class="form-control" required />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <select class="form-control form-control-lg" id="idMar" name="idMar"
+        [(ngModel)]="updatedMarId">
+        <option *ngFor="let marque of marques" [value]="marque.idMar">{{marque.nomMar}}</option>
+      </select>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Modifier</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Tv :</h2>
+  </div>
+  <form [formGroup]="addTvForm" (ngSubmit)="addTv()">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>ID Tv</label>
+      <input type="text" formControlName="IdTv" class="form-control" required />
+      <div *ngIf="addTvForm.get('IdTv')?.touched && addTvForm.get('IdTv')?.errors?.['required']" class="text-danger">
+        Le ID du Tv est obligatoire.
+      </div>
+      <div *ngIf="addTvForm.get('IdTv')?.touched && addTvForm.get('IdTv')?.errors?.['minlength']" class="text-danger">
+        Le ID doit contenir au moins 1 caractère.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Tv</label>
+      <input type="text" formControlName="nomTv" class="form-control" required />
+      <div *ngIf="addTvForm.get('nomTv')?.touched && addTvForm.get('nomTv')?.errors?.['required']" class="text-danger">
+        Le nom du Tv est obligatoire.
+      </div>
+      <div *ngIf="addTvForm.get('nomTv')?.touched && addTvForm.get('nomTv')?.errors?.['minlength']" class="text-danger">
+        Le nom doit contenir au moins 3 caractères.
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" required />
+      <div *ngIf="addTvForm.get('email')?.touched && addTvForm.get('email')?.errors?.['invalidEmail']" class="text-danger">
+        L'email doit contenir '&#64;' et se terminer par '.com'.
+      </div>
+      <div *ngIf="addTvForm.get('email')?.touched && addTvForm.get('email')?.errors?.['required']" class="text-danger">
+        L'email est obligatoire.
+      </div>
+    </div> -->
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Prix Tv</label>
+      <input type="number" formControlName="prixTv" class="form-control" required />
+      <div *ngIf="addTvForm.get('prixTv')?.touched && addTvForm.get('prixTv')?.errors?.['required']" class="text-danger">
+        Le prix est obligatoire.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date Création</label>
+      <input type="date" formControlName="dateCreation" class="form-control" required />
+      <div *ngIf="addTvForm.get('dateCreation')?.touched && addTvForm.get('dateCreation')?.errors?.['required']" class="text-danger">
+        La date de création est obligatoire.
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <select class="form-control" formControlName="idMar">
+        <option value="">Sélectionner une marque</option>
+        <option *ngFor="let marque of marques" [value]="marque.idMar">{{ marque.nomMar }}</option>
+      </select>
+      <div *ngIf="addTvForm.get('idMar')?.touched && addTvForm.get('idMar')?.errors?.['required']" class="text-danger">
+        La marque est obligatoire.
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>

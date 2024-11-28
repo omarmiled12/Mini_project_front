@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+
+        <thead>
+          <tr> <th>Id</th><th>Nom</th> <th>Prix</th>  <th>Date Création</th><th>Marque</th> </tr>
+        </thead>
+        <tbody *ngFor="let tv of tvs">
+          <tr>
+            <td>{{tv.idTv}}</td>
+            <td>{{tv.nomTv}}</td>
+            <td>{{tv.prixTv}}</td>
+            <td>{{tv.dateCreation | date:'dd/MM/yyyy' }}</td>
+            <td>{{tv.marque.nomMar}}</td>
+            <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerTv(tv)">Supprimer</a></td>
+            <a   *ngIf="authService.isAdmin()" [routerLink]="['/update-tv', tv.idTv]" class="btn btn-success">Modifier</a>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
